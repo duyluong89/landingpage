@@ -1,0 +1,73 @@
+<%
+@privilege = 1
+%>
+<div id="user_form" class="relative">
+	<h2>Add new User</h2>
+	<p>
+		<%= link_to "Users management", @user%>
+		> Add new User
+    </p>
+    <div class="form">
+			<%= form_for @user, :url=>"/users/create", :method=>"PUT" do |f|%>
+			<span>
+				<%= f.label :username, "User name"%>
+				<%= f.text_field :username%>
+				 <span id="lblMsg" class="msg" style="color:red; margin-left: 10px;">
+			</span>
+			</span>
+            <span>
+				<%= f.label :privilege, "privilege"%>
+				<!-- <select name="data[privilege]" class="selectbox <?php if ($privilege == 1) echo 'levelSelect'; ?>">
+                	<?php echo getSelectObject($usersArr, $data['privilege'], 'privilege', 'userType');?>
+                </select> -->
+               
+                
+			</span>
+			<% if @privilege == 1 %>
+			<span class="leader">
+				<%= f.label :leader, "Leader"%>
+				<!-- <select name="data[leaderId]" class="selectbox">
+                	<?php echo getSelectObject($arrLeaders, $data['leaderId'], 'id', 'username');?>
+                </select> -->
+			</span>
+			<%  end %>
+            <span>
+				<label>Password</label>
+				<%= f.password_field :password, :class=>"inputbox required"%>
+			</span>
+            <span>
+				<%= f.label :name, "Name"%>
+				<%= f.text_field :name, :class=>"inputbox required" %>
+			</span>
+            <span>
+				<%= f.label :email, "Email" %>
+				<%= f.text_field :email, :class=>"inputbox email"%>
+			</span>
+            <span>
+				<label>Description</label>
+				<%= f.text_area :description, :class=>"textbox"%>
+			</span>
+            <span>
+				<label>Can Edit Analytics Code</label>
+				<!-- <input type="checkbox" value="1" name="data[enabledAnalCode]" <?php if(isset($data['enabledAnalCode']) && $data['enabledAnalCode'] == 1) echo "checked='checked'";?>/>
+					
+                 -->
+                 <%= f.check_box :enabledAnalCode, :value=>"1"%>
+                 <input type="hidden" value="0" />
+			</span>
+            <span>
+				<label>Active</label>
+				<!-- <input type="checkbox" value="1" name="data[status]" <?php if(!isset($data['status']) || (isset($data['status']) && $data['status'] == 1)) echo "checked='checked'";?> /> -->
+                <%= f.check_box :status, :value=>"1"%>
+                <input type="hidden" value="0" />
+			</span>
+			<span>
+				<label>&nbsp;</label>
+				
+				<%= f.submit "Save", :disable_with => 'Save', :class=>"button"%>
+			</span>
+			<input type="hidden" id="txtListUsername" value="<?php echo $listUsername;?>" />
+		<% end %>
+    </div>
+    
+</div>
