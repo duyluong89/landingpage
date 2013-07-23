@@ -2,13 +2,41 @@
 <html>
 <head>
   <title>Landingpage</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+<link rel="shortcut icon" href="public/admin/images/logo_padcloud.ico" />
+<%= javascript_include_tag "admin/jquery-1.8.3" %>
+<%= javascript_include_tag "admin/jquery.autosize-min" %>
+<%= javascript_include_tag "admin/jquery.maxlength" %>
+<%= javascript_include_tag "admin/jqueryui/js/jquery-ui" %>
+<%= javascript_include_tag "admin/colorpicker/js/colorpicker" %>
+<%= javascript_include_tag "admin/functions" %>
+<%= javascript_include_tag "admin/script" %>
+<%= javascript_include_tag "admin/jquery.validate" %>
+<%= javascript_include_tag "admin/validation" %>
+<%= stylesheet_link_tag    "../stylesheets/admin/colorpicker/css/colorpicker", :media => "all" %>
+<%= javascript_include_tag "admin/jquery-ui" %>
+<%= stylesheet_link_tag    "admin/style", :media => "all" %>
 </head>
 <body>
 
-<%= yield %>
 
+
+<div id="wrapper">
+	<div id="header">
+        <%= render :partial => "layouts/header"%>
+    </div>
+    <div id="nav">
+    	 <%= render :partial => "layouts/nav"%>
+    </div>
+    <div id="mid">
+    	<%= yield %>
+    </div>
+    <div id="footer">
+    	<%= render :partial => "layouts/footer"%>
+    </div>
+</div>
+<div id="preview">
+</div>
+<a href="#" id="close_preview">Close</a>
 </body>
 </html>

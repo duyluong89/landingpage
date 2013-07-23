@@ -1,0 +1,26 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{margin:0; padding:0;}
+a{text-decoration:none;}
+body{background:url(../images/bg_wrapper.jpg) left top #fff no-repeat; font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#878787; font-style:normal;}
+
+h1{ background-color:#e7e7e7; text-indent:25px; height:55px; line-height:55px; color:black; font-size:24px; font-weight:bold;}
+label{display: block;margin-bottom: 4px;margin-top: 8px;}
+span{display:block; height:30px; line-height:30px;}
+span a{ color:#903908; font-size:14px;}
+span a:hover{ text-decoration:underline;}
+input[type="checkbox"]{ margin:16px 5px 16px 0px;}
+p{ color:#d85006; margin-top:8px;}
+
+/*#wrapper{background:url(../images/logo.png) 30px 11px no-repeat; position:absolute;}*/
+#wrapper{ width:980px; margin:0 auto; /*background-color:white;*/}
+#header{ height:100px; clear:both; border-bottom: 1px solid #FAFBFC; } /*background:url(../images/bg_header.png) repeat-x; }*/
+#header span{ height:100px; line-height: 100px; float:left; color: black; font-weight:bold; font-size:24px; display:block; text-indent:100px; background: url(../images/logo_padcloud.png) 20px center no-repeat; background-size: 68px;}
+#header-border-div {width: 100%;height: 0;margin: 0px 0 0 0; border-bottom: 1px solid #d1d6dc;}
+#login{ width:224px; background-color:#fff; margin-top:0px; margin-left:378px;}
+
+.inputbox{ width:178px; height:32px; background-color:#fafafa; border:1px solid #e3e3e3; display:block; text-indent:5px; margin-bottom:15px;}
+.button2{ width:152px; height:35px; line-height:30px; background:url(../images/bt.png) no-repeat transparent; text-align:center; color:#fff; font-size:14px; font-weight:bold; padding-bottom:4px; border:0px; margin-top:14px;}
+.content{ margin:0px 25px; padding: 10px 0 15px;}
+.button{background-color: #244b97;border: 1px solid #244b97;border-right: 1px solid #244b97;border-bottom: 1px solid #244b97;border-radius:4px;color: white;padding: 5px 18px; margin-left:0px; font-style:normal !important;}

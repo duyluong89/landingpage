@@ -1,4 +1,6 @@
 Landingpage::Application.routes.draw do
+  
+  match "users" => "users#index"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
