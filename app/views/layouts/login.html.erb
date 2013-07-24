@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Landingpage</title>
+  <%= csrf_meta_tags %>
+<link rel="shortcut icon" href="public/admin/images/logo_padcloud.ico" />
+<%= javascript_include_tag "admin/jquery-1.8.3" %>
+<%= stylesheet_link_tag    "admin/bootstrap", :media => "all" %>
+<%= stylesheet_link_tag    "admin/login", :media => "all" %>
+</head>
+<body>
+
+
+
+<div id="wrapper">
+	<div id="header">
+		 <span>PadCloud landing page CMS</span>
+	</div>
+	<div id="header-border-div"></div>
+	<div id="login">
+    	<!--h1>Login</h1-->
+		<%= form_for :user, url: "users/dologin",:method=>"post" do |f|%>
+        <div class="content">
+        	<%= f.label :username, "User name"%>
+            <%= f.text_field :username, :class=>"inputbox"%>
+            <%= f.label :password, "Password"%>
+            <%= f.password_field :password, :class=>"inputbox"%>
+            <!--<span>
+            	<input type="checkbox" class="checkbox" value="1" name="remember" />Remember me
+            </span>
+            <span>
+            	<a href="#">Forgot password?</a>
+            </span>-->
+            <%= f.submit "Login", :disable_with => 'Login', :class=>"button"%>
+            <p class="error-report"><!-- <?php if(isset($msg)){echo $msg;}?> --></p>
+        </div>
+        <% end %>
+	</div>
+</div>
+</body>
+</html>

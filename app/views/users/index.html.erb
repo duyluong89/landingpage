@@ -39,12 +39,14 @@
                 <td><%= row.name%></td>
                 <td><%= row.createdDate%></td>
                 <td><%= row.lastVisitDate%></td>
-                <td><%= @privilege%></td>
+                <td><%= @privilege %></td>
                 <td><%= @status%></td>
                 <td>
-                    <a href="index.php?c=user&task=edit&id=<?php echo $id;?>">Edit</a>
-                   <a rel="index.php?c=user&task=delete&id=<?php echo $id;?>" href="#" class="confirmDelete">Delete</a>
-                   
+                    <!-- <a href="index.php?c=user&task=edit&id=<?php echo $id;?>">Edit</a> -->
+                    <%= link_to "Edit", edit_user_path(row.id)%>
+                  <% if $currentUser.id != row.id %>
+                   <%= link_to "Delete", user_path(row.id)%>
+                   <% end%>
                 </td>
             </tr>
             <% end%>

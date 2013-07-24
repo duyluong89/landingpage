@@ -8,10 +8,10 @@
 		> Add new User
     </p>
     <div class="form">
-			<%= form_for :post, url: users_path, :method=>"post" do |f|%>
+			<%= form_for :user, url: user_path(@user.id), :method=>"post" do |f|%>
 			<span>
 				<%= f.label :username, "User name"%>
-				<%= f.text_field :username, :class=>"inputbox required"%>
+				<%= f.text_field :username%>
 				 <span id="lblMsg" class="msg" style="color:red; margin-left: 10px;">
 			</span>
 			</span>
@@ -21,7 +21,7 @@
                 	<?php echo getSelectObject($usersArr, $data['privilege'], 'privilege', 'userType');?>
                 </select> -->
                
-                
+       
 			</span>
 			<% if @privilege == 1 %>
 			<span class="leader">
@@ -31,10 +31,7 @@
                 </select> -->
 			</span>
 			<%  end %>
-            <span>
-				<label>Password</label>
-				<%= f.password_field :password, :class=>"inputbox required"%>
-			</span>
+          
             <span>
 				<%= f.label :name, "Name"%>
 				<%= f.text_field :name, :class=>"inputbox required" %>
@@ -49,19 +46,24 @@
 			</span>
             <span>
 				<label>Can Edit Analytics Code</label>
-				 <%= f.check_box :enabledAnalCode, :value=>"1"%>
+				<!-- <input type="checkbox" value="1" name="data[enabledAnalCode]" <?php if(isset($data['enabledAnalCode']) && $data['enabledAnalCode'] == 1) echo "checked='checked'";?>/>
+					
+                 -->
+                 <%= f.check_box :enabledAnalCode, :value=>"1"%>
                  <input type="hidden" value="0" />
 			</span>
             <span>
 				<label>Active</label>
-				<%= f.check_box :status, :value=>"1"%>
+				<!-- <input type="checkbox" value="1" name="data[status]" <?php if(!isset($data['status']) || (isset($data['status']) && $data['status'] == 1)) echo "checked='checked'";?> /> -->
+                <%= f.check_box :status, :value=>"1"%>
                 <input type="hidden" value="0" />
 			</span>
 			<span>
 				<label>&nbsp;</label>
+				
 				<%= f.submit "Save", :disable_with => 'Save', :class=>"button"%>
 			</span>
-			<input type="hidden" id="txtListUsername" value="" />
+			<input type="hidden" id="txtListUsername" value="<?php echo $listUsername;?>" />
 		<% end %>
     </div>
     
