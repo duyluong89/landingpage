@@ -1,11 +1,24 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  $currentUser = nil
+   
+  def getCurentUser
+    return session[:curentUser]
+  end
   
+  def setCurentUser(curentUser)
+    session[:curentUser] = curentUser
+  end
   
-  def check_Authentication
-    if $currentUser == nil
-      #render :layout=>"login"
+  private
+  def checkAuthentication
+    if session[:curentUser].present? 
+       
+       return true
+     else
+       redirect_to :controller => "users", :action => "login"
+       return false
     end
   end
+  
+  
 end

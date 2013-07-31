@@ -44,8 +44,10 @@
                 <td>
                     <!-- <a href="index.php?c=user&task=edit&id=<?php echo $id;?>">Edit</a> -->
                     <%= link_to "Edit", edit_user_path(row.id)%>
-                  <% if $currentUser.id != row.id %>
-                   <%= link_to "Delete", user_path(row.id)%>
+                  <% 
+                  @currentUser = session[:curentUser]
+                  if @currentUser.id != row.id %>
+                   <%= link_to 'Delete', user_path(row,"destroy"),:method=> :delete, :confirm => "Are you sure?" %>
                    <% end%>
                 </td>
             </tr>

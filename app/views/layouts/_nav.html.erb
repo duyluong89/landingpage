@@ -1,12 +1,11 @@
-<ul>
-	<li><a href="index.php">Landing pages</a></li>
-	<li><a href="index.php?c=popup&task=edit">Tutorial text</a></li>
-   	<li><a href="index.php?c=splash&task=edit">Splash screen</a></li>
-	<li><a href="index.php?c=app">Apps</a></li>
-    <li><a href="index.php?c=language">Languages</a></li>
-    <li><a href="index.php?c=other&task=edit">Others</a></li>
-   	<li><a href="index.php?c=other&task=downloadUserData">Download User Data</a></li>
-    <li><a href="index.php?c=other&task=defaultValues">Analytics</a></li>
-   	<li><%= link_to "Users", users_path()%></li>
-    <li><a href="index.php?c=ads&task=viewList">Ads</a></li>
-</ul>
+<% @curent =  session[:curentUser]%>
+ 	<%=
+ 		case @curent.privilege
+ 		when 1
+ 			render :partial => "layouts/menuApg"
+ 		when 50
+ 			render :partial => "layouts/menuAdmin"
+ 		when 100
+ 				render :partial => "layouts/menuSuperAdmin"
+ 		end		
+ 	%>

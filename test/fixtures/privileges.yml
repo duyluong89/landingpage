@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  controller,tring: MyString
+  task,string: MyString
+  privilege,string: MyString
+  description,string: MyString
+
+two:
+  controller,tring: MyString
+  task,string: MyString
+  privilege,string: MyString
+  description,string: MyString

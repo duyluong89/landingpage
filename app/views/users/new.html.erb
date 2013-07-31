@@ -20,7 +20,7 @@
 				<!-- <select name="data[privilege]" class="selectbox <?php if ($privilege == 1) echo 'levelSelect'; ?>">
                 	<?php echo getSelectObject($usersArr, $data['privilege'], 'privilege', 'userType');?>
                 </select> -->
-               
+               <%= select_tag "post[privilege]",  options_for_select([["APG",1],["SWAT Leader",50],["SWAT Team",100]])%>
                 
 			</span>
 			<% if @privilege == 1 %>

@@ -2,8 +2,8 @@
 <html>
 <head>
   <title>Landingpage</title>
-  <%= csrf_meta_tags %>
-<link rel="shortcut icon" href="public/admin/images/logo_padcloud.ico" />
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tag %>
 <%= javascript_include_tag "admin/jquery-1.8.3" %>
 <%= javascript_include_tag "admin/jquery.autosize-min" %>
 <%= javascript_include_tag "admin/jquery.maxlength" %>
@@ -13,8 +13,7 @@
 <%= javascript_include_tag "admin/script" %>
 <%= javascript_include_tag "admin/jquery.validate" %>
 <%= javascript_include_tag "admin/validation" %>
-<%= stylesheet_link_tag    "../stylesheets/admin/colorpicker/css/colorpicker", :media => "all" %>
-<%= javascript_include_tag "admin/jquery-ui" %>
+<%= stylesheet_link_tag    "../assets/admin/colorpicker/css/colorpicker", :media => "all" %>
 <%= stylesheet_link_tag    "admin/style", :media => "all" %>
 </head>
 <body>

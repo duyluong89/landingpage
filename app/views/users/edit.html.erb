@@ -1,5 +1,5 @@
 <%
-@privilege = 1
+@privilege = @user.privilege
 %>
 <div id="user_form" class="relative">
 	<h2>Add new User</h2>
@@ -8,7 +8,7 @@
 		> Add new User
     </p>
     <div class="form">
-			<%= form_for :user, url: user_path(@user.id), :method=>"post" do |f|%>
+			<%= form_for :user, url: user_path(@user.id,"update"), :method=>"put" do |f|%>
 			<span>
 				<%= f.label :username, "User name"%>
 				<%= f.text_field :username%>
@@ -20,7 +20,7 @@
 				<!-- <select name="data[privilege]" class="selectbox <?php if ($privilege == 1) echo 'levelSelect'; ?>">
                 	<?php echo getSelectObject($usersArr, $data['privilege'], 'privilege', 'userType');?>
                 </select> -->
-               
+               <%= select_tag "user[privilege]",  options_for_select([["APG",1],["SWAT Leader",50],["SWAT Team",100]],@user.privilege) %>
        
 			</span>
 			<% if @privilege == 1 %>
@@ -31,7 +31,7 @@
                 </select> -->
 			</span>
 			<%  end %>
-          
+          <%=  f.%>
             <span>
 				<%= f.label :name, "Name"%>
 				<%= f.text_field :name, :class=>"inputbox required" %>

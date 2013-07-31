@@ -1,17 +1,13 @@
 class UsersController < ApplicationController
   
-  #before_filter :check_Authentication
+  before_filter :checkAuthentication , :only=>['index', 'new', 'edit','destroy','logout']
   
   def index
     @user = User.all
   end
-  
-  def show
-    
-  end
+ 
   def new
     @user = User.new
-    #render :text=>Time.now
   end
   
   def create
@@ -34,18 +30,21 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
  
-    if @user.update(params[:user])
+    if @user.update_attributes(params[:user])
       redirect_to :action=>"index"
     else
       render 'edit'
     end
   end
   
+ def destroy
+   @user = User.find(params[:id])
+   @user.destroy
+   redirect_to users_path
+  end
+  
   def login
-    if $currentUser == nil
       render :layout => "login"
-    else redirect_to :action=>"index" 
-    end
   end
   
   def dologin
@@ -53,7 +52,8 @@ class UsersController < ApplicationController
     @password = params[:user]["password"]
     @login = User.checkLogin(@username,@password)
     if @login
-      $currentUser = @login
+      #$currentUser = @login
+      setCurentUser(@login)
        redirect_to :action=>"index"
     else redirect_to :action=>"login"
     end
@@ -61,7 +61,7 @@ class UsersController < ApplicationController
   end
   
   def logout
-    $currentUser = nil
+    setCurentUser(nil)
     redirect_to :action=>"login"
   end
   
