@@ -1,0 +1,41 @@
+<div id="user_form" class="relative">
+	<h2>Add new Privilege</h2>
+	<p>
+		<%= link_to "Privilege management", privileges_path()%>
+		> Add new Privilege
+    </p>
+    <div class="form">
+			<%= form_for :privilege, url: privileges_path, :method=>"post" do |f|%>
+			<span>
+				<%= f.label :controller, "Controller"%>
+				<%= f.text_field :controller, :class=>"inputbox required"%>
+				 <span id="lblMsg" class="msg" style="color:red; margin-left: 10px;">
+			</span>
+			</span>
+			
+			<span>
+				<%= f.label :task, "Task"%>
+				<%= f.text_field :task, :class=>"inputbox required"%>
+				 <span id="lblMsg" class="msg" style="color:red; margin-left: 10px;">
+			</span>
+			</span>
+		
+            <span>
+				<%= f.label :privilege, "privilege"%>
+				<%= select_tag "privilege[privilege]",  options_for_select([["APG",1],["SWAT Leader",50],["SWAT Team",100]]), :multiple => true %>
+           </span>
+			<br />	
+			<span>
+				<%= f.label :description, "Description"%>
+				<%= f.text_area :description,:class=>"textbox descript-privilege" %>
+           </span>
+           
+			<span>
+				<label>&nbsp;</label>
+				<%= f.submit "Save", :disable_with => 'Save', :class=>"button"%>
+			</span>
+			<input type="hidden" id="txtListUsername" value="" />
+		<% end %>
+    </div>
+    
+</div>

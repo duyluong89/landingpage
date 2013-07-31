@@ -8,7 +8,7 @@
 		> Add new User
     </p>
     <div class="form">
-			<%= form_for :post, url: users_path, :method=>"post" do |f|%>
+    		<%= form_for :post, url: users_path, :method=>"post" do |f|%>
 			<span>
 				<%= f.label :username, "User name"%>
 				<%= f.text_field :username, :class=>"inputbox required"%>

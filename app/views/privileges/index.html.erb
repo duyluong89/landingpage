@@ -1,0 +1,30 @@
+<div id="user_list">
+    <h2>Privilege Management</h2>
+    <%= link_to "+ Add new Privilege", new_privilege_path()%>
+    <table class="list" cellpadding="0" cellspacing="0">
+        <thead>
+            <tr>
+                <td width="5%">Id</td>
+                <td>Controller</td>
+                <td>Task</td>
+                <td width="12%">Actions</td>
+            </tr>
+        </thead>
+        <tbody>
+        	
+			<% @privilege.each do |row|%>
+			<tr>
+                <td><%= row.id %></td>
+                <td><%= row.controller %></td>
+                <td><%= row.task%></td>
+                <td>
+                    <!-- <a href="index.php?c=user&task=edit&id=<?php echo $id;?>">Edit</a> -->
+                    <%= link_to "Edit", edit_privilege_path(row.id)%>
+                   <%= link_to 'Delete', privilege_path(row,"destroy"),:method=> :delete, :confirm => "Are you sure?" %>
+                   </td>
+            </tr>
+            <% end%>
+            
+        </tbody>
+    </table>
+</div>

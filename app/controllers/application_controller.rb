@@ -12,7 +12,6 @@ class ApplicationController < ActionController::Base
   private
   def checkAuthentication
     if session[:curentUser].present? 
-       
        return true
      else
        redirect_to :controller => "users", :action => "login"
@@ -20,5 +19,10 @@ class ApplicationController < ActionController::Base
     end
   end
   
+   def checkAccess
+    @curentUser = session[:curentUser]
+    return true
+  end
+   
   
 end

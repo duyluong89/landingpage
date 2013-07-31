@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   
-  before_filter :checkAuthentication , :only=>['index', 'new', 'edit','destroy','logout']
+  before_filter :checkAuthentication,:checkAccess , :only=>['index', 'new', 'edit','destroy','logout']
   
   def index
     @user = User.all
