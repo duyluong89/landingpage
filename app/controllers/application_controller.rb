@@ -21,7 +21,15 @@ class ApplicationController < ActionController::Base
   
    def checkAccess
     @curentUser = session[:curentUser]
-    return true
+    @curentController = params[:controller]
+    @curentAction = params[:action]
+    if(@privilege = Privilege.checkPrivilege(@curentUser.privilege, @curentController, @curentAction))
+      session[:task] = @privilege[0].task.split(',')
+      return true
+    else
+       redirect_to :controller=>"users", :action=>"denied"
+       return false
+    end
   end
    
   

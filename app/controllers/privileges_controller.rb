@@ -5,6 +5,8 @@ class PrivilegesController < ApplicationController
   end
 
   def new
+    #render :text=> controller_path()
+    #return
     @privilege = Privilege.new
   end
 

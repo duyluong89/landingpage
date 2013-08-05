@@ -8,7 +8,7 @@
 		> Add new User
     </p>
     <div class="form">
-			<%= form_for :user, url: user_path(@user.id,"update"), :method=>"put" do |f|%>
+			<%= form_for :user, url: user_path(@user.id,"update"), :method=>"put" do |f| %>
 			<span>
 				<%= f.label :username, "User name"%>
 				<%= f.text_field :username%>
@@ -17,10 +17,7 @@
 			</span>
             <span>
 				<%= f.label :privilege, "privilege"%>
-				<!-- <select name="data[privilege]" class="selectbox <?php if ($privilege == 1) echo 'levelSelect'; ?>">
-                	<?php echo getSelectObject($usersArr, $data['privilege'], 'privilege', 'userType');?>
-                </select> -->
-               <%= select_tag "user[privilege]",  options_for_select([["APG",1],["SWAT Leader",50],["SWAT Team",100]],@user.privilege) %>
+				 <%= select_tag "user[privilege]",  options_for_select([["APG",1],["SWAT Leader",50],["SWAT Team",100]],@user.privilege) %>
        
 			</span>
 			<% if @privilege == 1 %>
@@ -31,7 +28,7 @@
                 </select> -->
 			</span>
 			<%  end %>
-          <%=  f.%>
+          
             <span>
 				<%= f.label :name, "Name"%>
 				<%= f.text_field :name, :class=>"inputbox required" %>
@@ -63,7 +60,7 @@
 				
 				<%= f.submit "Save", :disable_with => 'Save', :class=>"button"%>
 			</span>
-			<input type="hidden" id="txtListUsername" value="<?php echo $listUsername;?>" />
+			<input type="hidden" id="txtListUsername" value="" />
 		<% end %>
     </div>
     

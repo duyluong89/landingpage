@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   
-  before_filter :checkAuthentication,:checkAccess , :only=>['index', 'new', 'edit','destroy','logout']
+  before_filter :checkAuthentication,:checkAccess , :only=>['index', 'new', 'edit','destroy']
   
   def index
     @user = User.all
@@ -63,6 +63,10 @@ class UsersController < ApplicationController
   def logout
     setCurentUser(nil)
     redirect_to :action=>"login"
+  end
+  
+  def denied
+    
   end
   
 end
