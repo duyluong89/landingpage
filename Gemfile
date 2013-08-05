@@ -36,3 +36,10 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
+group :developer do
+ gem "webrick", "1.3.1"
+#gem 'therubyracer' #JavaScript
+gem 'thin' #Instead of webrick
+
+end 
