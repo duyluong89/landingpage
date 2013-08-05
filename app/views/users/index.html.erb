@@ -47,16 +47,15 @@
                    <% if (checkAction('edit'))%>
                     <%= link_to "Edit", edit_user_path(row.id)%>
                     <%end%>
-                    <% if (checkAction('delete'))%>
-                  <% 
-                  @currentUser = session[:curentUser]
-                  if @currentUser.id != row.id %>
-                   <%= link_to 'Delete', user_path(row,"destroy"),:method=> :delete, :confirm => "Are you sure?" %>
-                   <% end%>
-                   <%end%>
+                  <% if (checkAction('delete'))%>
+	                  <% @currentUser = session[:curentUser]
+	                  if @currentUser.id != row.id %>
+	                   <%= link_to 'Delete', user_path(row,"destroy"),:method=> :delete, :confirm => "Are you sure?" %>
+	                   <% end %>
+                   <% end %>
                 </td>
             </tr>
-            <% end%>
+            <% end %>
             
         </tbody>
     </table>

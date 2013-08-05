@@ -42,8 +42,24 @@ class PrivilegesController < ApplicationController
   def update
     @privilege = Privilege.find(params[:id])
  
+    @pri = params[:privilege]["privilege"]
+      @pri = @pri.split('-')
+      @strPrivilege = ""
+      @index = 0;
+      @pri.each do |i|
+        i.each do |j|
+          @strPrivilege += j.to_str 
+          if(i.count-1 > @index)
+            @strPrivilege += ","
+         end
+          @index +=1
+        end
+        
+      end
+      params[:privilege]["privilege"] = @strPrivilege
+      
     if @privilege.update_attributes(params[:privilege])
-      redirect_to @privilege
+      redirect_to :action=>"index"
     else
       render 'edit'
     end
