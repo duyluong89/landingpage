@@ -46,7 +46,7 @@
                 <td>
                    <% if (checkAction('edit'))%>
                     <%= link_to "Edit", edit_user_path(row.id)%>
-                    <%end%>
+                    <% end %>
                   <% if (checkAction('delete'))%>
 	                  <% @currentUser = session[:curentUser]
 	                  if @currentUser.id != row.id %>
@@ -59,4 +59,5 @@
             
         </tbody>
     </table>
+    <%= paginate @user %>
 </div>

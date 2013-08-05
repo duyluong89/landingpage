@@ -43,3 +43,4 @@ group :developer do
 gem 'thin' #Instead of webrick
 
 end 
+gem "kaminari"

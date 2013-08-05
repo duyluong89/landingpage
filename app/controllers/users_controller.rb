@@ -3,7 +3,8 @@ class UsersController < ApplicationController
   before_filter :checkAuthentication,:checkAccess , :only=>['index', 'new', 'edit','destroy']
   
   def index
-    @user = User.all
+    @user =  User.order(:name).page(params[:page]).per(2)
+   
   end
  
   def new
@@ -20,7 +21,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to :action=>"index"
     else
-      #render :text=>"ádadadada"
+      render :action=>"new"
     end
   end
   def edit

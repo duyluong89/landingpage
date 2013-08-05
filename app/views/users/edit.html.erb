@@ -43,16 +43,12 @@
 			</span>
             <span>
 				<label>Can Edit Analytics Code</label>
-				<!-- <input type="checkbox" value="1" name="data[enabledAnalCode]" <?php if(isset($data['enabledAnalCode']) && $data['enabledAnalCode'] == 1) echo "checked='checked'";?>/>
-					
-                 -->
-                 <%= f.check_box :enabledAnalCode, :value=>"1"%>
+				 <%= f.check_box :enabledAnalCode, :value=>"1"%>
                  <input type="hidden" value="0" />
 			</span>
             <span>
 				<label>Active</label>
-				<!-- <input type="checkbox" value="1" name="data[status]" <?php if(!isset($data['status']) || (isset($data['status']) && $data['status'] == 1)) echo "checked='checked'";?> /> -->
-                <%= f.check_box :status, :value=>"1"%>
+				<%= f.check_box :status, :value=>"1"%>
                 <input type="hidden" value="0" />
 			</span>
 			<span>
