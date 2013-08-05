@@ -1,12 +1,5 @@
 Landingpage::Application.routes.draw do
   
-  get "privileges/index"
-
-  get "privileges/new"
-
-  get "privileges/edit"
-
-  get "privileges/destroy"
 
   match "login"=>"users#login"
   match "logout"=>"users#logout"
