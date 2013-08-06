@@ -47,7 +47,7 @@
                    <% if (checkAction('edit'))%>
                     <%= link_to "Edit", edit_user_path(row.id)%>
                     <% end %>
-                  <% if (checkAction('delete'))%>
+                  <% if (checkAction('destroy'))%>
 	                  <% @currentUser = session[:curentUser]
 	                  if @currentUser.id != row.id %>
 	                   <%= link_to 'Delete', user_path(row,"destroy"),:method=> :delete, :confirm => "Are you sure?" %>
