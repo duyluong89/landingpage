@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_filter :checkAuthentication,:checkAccess , :only=>['index', 'new', 'edit','destroy']
   
   def index
-    @user =  User.order(:name).page(params[:page]).per(2)
+    @user =  User.order(:name).page(params[:page]).per(10)
    
   end
  

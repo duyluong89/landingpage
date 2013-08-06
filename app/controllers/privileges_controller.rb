@@ -1,7 +1,7 @@
 class PrivilegesController < ApplicationController
    before_filter :checkAuthentication , :only=>['index', 'new', 'edit','destroy']
   def index
-    @privilege = Privilege.all
+    @privilege = Privilege.order(:controller).page(params[:page]).per(10)
   end
 
   def new
