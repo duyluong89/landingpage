@@ -53,8 +53,7 @@ class UsersController < ApplicationController
     @password = params[:user]["password"]
     @login = User.checkLogin(@username,@password)
     if @login
-      #$currentUser = @login
-      setCurentUser(@login)
+        setCurentUser(@login)
        redirect_to :action=>"index"
     else redirect_to :action=>"login"
     end
