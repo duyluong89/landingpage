@@ -749,7 +749,7 @@ jQuery.extend({
 
 	css: function( elem, name, force, extra ) {
 		if ( name == "width" || name == "height" ) {
-			var val, props = { position: "absolute", visibility: "hidden", display:"block" }, which = name == "width" ? [ "Left", "Right" ] : [ "Top", "Bottom" ];
+			var val, props = { position: "absolute", visibility: "hidden", display:"blocks" }, which = name == "width" ? [ "Left", "Right" ] : [ "Top", "Bottom" ];
 
 			function getWH() {
 				val = name == "width" ? elem.offsetWidth : elem.offsetHeight;
@@ -3801,7 +3801,7 @@ jQuery.fn.extend({
 						
 						display = elem.css("display");
 						if ( display === "none" )
-							display = "block";
+							display = "blocks";
 						
 						elem.remove();
 						
@@ -4019,9 +4019,9 @@ jQuery.fx.prototype = {
 
 		(jQuery.fx.step[this.prop] || jQuery.fx.step._default)( this );
 
-		// Set display property to block for height/width animations
+		// Set display property to blocks for height/width animations
 		if ( ( this.prop == "height" || this.prop == "width" ) && this.elem.style )
-			this.elem.style.display = "block";
+			this.elem.style.display = "blocks";
 	},
 
 	// Get the current size
@@ -4114,7 +4114,7 @@ jQuery.fx.prototype = {
 					// Reset the display
 					this.elem.style.display = this.options.display;
 					if ( jQuery.css(this.elem, "display") == "none" )
-						this.elem.style.display = "block";
+						this.elem.style.display = "blocks";
 				}
 
 				// Hide the element if the "hide" operation was done

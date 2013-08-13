@@ -289,9 +289,9 @@ $.extend(Datepicker.prototype, {
 		if( inst.settings.disabled ) {
 			this._disableDatepicker( target );
 		}
-		// Set display:block in place of inst.dpDiv.show() which won't work on disconnected elements
+		// Set display:blocks in place of inst.dpDiv.show() which won't work on disconnected elements
 		// http://bugs.jqueryui.com/ticket/7552 - A Datepicker created on a detached div has zero height
-		inst.dpDiv.css( "display", "block" );
+		inst.dpDiv.css( "display", "blocks" );
 	},
 
 	/* Pop-up the date picker in a "dialog" box.
@@ -671,7 +671,7 @@ $.extend(Datepicker.prototype, {
 		//to avoid flashes on Firefox
 		inst.dpDiv.empty();
 		// determine sizing offscreen
-		inst.dpDiv.css({position: 'absolute', display: 'block', top: '-1000px'});
+		inst.dpDiv.css({position: 'absolute', display: 'blocks', top: '-1000px'});
 		$.datepicker._updateDatepicker(inst);
 		// fix width for dynamic number of date pickers
 		// and adjust position before showing

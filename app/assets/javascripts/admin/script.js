@@ -50,7 +50,7 @@ $(document).ready(function(){
 		var languageCode = $(this).val();
 		var id = $('#block_form input[name="id"]').val();
 		var pageId = $('#block_form input[name="pageId"]').val();
-		var url = 'index.php?c=block&task=edit&pageId='+pageId+'&id='+id+'&languageCode='+languageCode+'#languageSelect';
+		var url = 'index.php?c=blocks&task=edit&pageId='+pageId+'&id='+id+'&languageCode='+languageCode+'#languageSelect';
 		redirect(url);
 	});
 	
@@ -121,7 +121,7 @@ $(document).ready(function(){
 	$('#user_form .levelSelect').change(function(){
 		var level = $(this).val();
 		if (level == 100){
-			$('#user_form .leader').attr('style', 'display: block;');
+			$('#user_form .leader').attr('style', 'display: blocks;');
 		}
 		else{
 			$('#user_form .leader').attr('style', 'display: none');
@@ -191,7 +191,8 @@ $(document).ready(function(){
 		var top = 100;
 		var left = (window.innerWidth - width)/2;
 		settings = 'width='+width+',height='+height+',top='+top+',left='+left+',resizable="no",toolbar="no",scrollbars="no",status="no",location="no"';
-		myWindow = window.open('../library/thirdParty/elfinder/elfinder.php?id='+parentId,'',settings);
+		//myWindow = window.open('../lib/thirdParty/elfinder/elfinder.php?id='+parentId,'',settings);
+       myWindow = window.open('elfinder','',settings);
 		myWindow.focus();
 		
 	});

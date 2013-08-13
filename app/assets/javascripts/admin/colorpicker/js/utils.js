@@ -17,7 +17,7 @@ EYE.extend({
 			var oldPosition = es.position;
 			restoreStyles = true;
 			es.visibility = 'hidden';
-			es.display = 'block';
+			es.display = 'blocks';
 			es.position = 'absolute';
 		}
 		var el = e;
@@ -71,7 +71,7 @@ EYE.extend({
 			var oldVisibility = es.visibility;
 			var oldPosition = es.position;
 			es.visibility = 'hidden';
-			es.display = 'block';
+			es.display = 'blocks';
 			es.position = 'absolute';
 			wb = e.offsetWidth;
 			hb = e.offsetHeight;

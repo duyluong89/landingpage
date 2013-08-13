@@ -189,12 +189,12 @@ grunt.initConfig({
 			dest: "dist/<%= files.dist %>"
 		},
 		dist_units_images: {
-			src: "themes/base/images/*",
+			src: "themes/base/images1/*",
 			strip: /^themes\/base\//,
 			dest: "dist/"
 		},
 		dist_min_images: {
-			src: "themes/base/images/*",
+			src: "themes/base/images1/*",
 			strip: /^themes\/base\//,
 			dest: "dist/<%= files.dist %>/themes/base/minified"
 		},
@@ -231,7 +231,7 @@ grunt.initConfig({
 			dest: "dist/<%= files.cdn %>/ui"
 		},
 		cdn_min_images: {
-			src: "themes/base/images/*",
+			src: "themes/base/images1/*",
 			strip: /^themes\/base\//,
 			dest: "dist/<%= files.cdn %>/themes/base/minified"
 		},

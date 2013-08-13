@@ -1,16 +1,22 @@
 Landingpage::Application.routes.draw do
-  
 
+  get "blocks/index"
+
+  #get "/pages/new"
   match "login"=>"users#login"
   match "logout"=>"users#logout"
   match "denied"=> "users#denied"
-  #match "users/new"=>"users#new"
-  #match "users.create"=>"users#create"
-  
+  match "pages/duplicate" => "pages#duplicate"
+  match "ads/index" => "ads#index"
+  match "ads/duplicate" => "ads#duplicate"
+  match "page/elfinder" => "page#elfinder"
+  match "blocks/index" => "blocks#index"
+
   resources :users
   resources :privileges
   resources :pages
   resources :ads
+  resources :blocks
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

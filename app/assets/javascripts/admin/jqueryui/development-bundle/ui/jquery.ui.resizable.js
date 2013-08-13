@@ -79,7 +79,7 @@ $.widget("ui.resizable", $.ui.mouse, {
 			this.originalElement.css('resize', 'none');
 
 			//Push the actual element to our proportionallyResize internal array
-			this._proportionallyResizeElements.push(this.originalElement.css({ position: 'static', zoom: 1, display: 'block' }));
+			this._proportionallyResizeElements.push(this.originalElement.css({ position: 'static', zoom: 1, display: 'blocks' }));
 
 			// avoid IE jump (hard set the margin)
 			this.originalElement.css({ margin: this.originalElement.css('margin') });
@@ -739,7 +739,7 @@ $.ui.plugin.add("resizable", "ghost", {
 
 		that.ghost = that.originalElement.clone();
 		that.ghost
-			.css({ opacity: .25, display: 'block', position: 'relative', height: cs.height, width: cs.width, margin: 0, left: 0, top: 0 })
+			.css({ opacity: .25, display: 'blocks', position: 'relative', height: cs.height, width: cs.width, margin: 0, left: 0, top: 0 })
 			.addClass('ui-resizable-ghost')
 			.addClass(typeof o.ghost == 'string' ? o.ghost : '');
 

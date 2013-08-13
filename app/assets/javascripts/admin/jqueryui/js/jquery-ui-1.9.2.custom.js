@@ -1054,7 +1054,7 @@ $.position = {
 			return cachedScrollbarWidth;
 		}
 		var w1, w2,
-			div = $( "<div style='display:block;width:50px;height:50px;overflow:hidden;'><div style='height:100px;width:auto;'></div></div>" ),
+			div = $( "<div style='display:blocks;width:50px;height:50px;overflow:hidden;'><div style='height:100px;width:auto;'></div></div>" ),
 			innerDiv = div.children()[0];
 
 		$( "body" ).append( div );
@@ -1623,7 +1623,7 @@ $.widget("ui.draggable", $.ui.mouse, {
 
 		/*
 		 * - Position generation -
-		 * This block generates everything position related - it's the core of draggables.
+		 * This blocks generates everything position related - it's the core of draggables.
 		 */
 
 		//Cache the margins of the original element
@@ -2695,7 +2695,7 @@ $.widget("ui.resizable", $.ui.mouse, {
 			this.originalElement.css('resize', 'none');
 
 			//Push the actual element to our proportionallyResize internal array
-			this._proportionallyResizeElements.push(this.originalElement.css({ position: 'static', zoom: 1, display: 'block' }));
+			this._proportionallyResizeElements.push(this.originalElement.css({ position: 'static', zoom: 1, display: 'blocks' }));
 
 			// avoid IE jump (hard set the margin)
 			this.originalElement.css({ margin: this.originalElement.css('margin') });
@@ -3355,7 +3355,7 @@ $.ui.plugin.add("resizable", "ghost", {
 
 		that.ghost = that.originalElement.clone();
 		that.ghost
-			.css({ opacity: .25, display: 'block', position: 'relative', height: cs.height, width: cs.width, margin: 0, left: 0, top: 0 })
+			.css({ opacity: .25, display: 'blocks', position: 'relative', height: cs.height, width: cs.width, margin: 0, left: 0, top: 0 })
 			.addClass('ui-resizable-ghost')
 			.addClass(typeof o.ghost == 'string' ? o.ghost : '');
 
@@ -3787,7 +3787,7 @@ $.widget("ui.sortable", $.ui.mouse, {
 
 		/*
 		 * - Position generation -
-		 * This block generates everything position related - it's the core of draggables.
+		 * This blocks generates everything position related - it's the core of draggables.
 		 */
 
 		//Cache the margins of the original element
@@ -6727,9 +6727,9 @@ $.extend(Datepicker.prototype, {
 		if( inst.settings.disabled ) {
 			this._disableDatepicker( target );
 		}
-		// Set display:block in place of inst.dpDiv.show() which won't work on disconnected elements
+		// Set display:blocks in place of inst.dpDiv.show() which won't work on disconnected elements
 		// http://bugs.jqueryui.com/ticket/7552 - A Datepicker created on a detached div has zero height
-		inst.dpDiv.css( "display", "block" );
+		inst.dpDiv.css( "display", "blocks" );
 	},
 
 	/* Pop-up the date picker in a "dialog" box.
@@ -7109,7 +7109,7 @@ $.extend(Datepicker.prototype, {
 		//to avoid flashes on Firefox
 		inst.dpDiv.empty();
 		// determine sizing offscreen
-		inst.dpDiv.css({position: 'absolute', display: 'block', top: '-1000px'});
+		inst.dpDiv.css({position: 'absolute', display: 'blocks', top: '-1000px'});
 		$.datepicker._updateDatepicker(inst);
 		// fix width for dynamic number of date pickers
 		// and adjust position before showing

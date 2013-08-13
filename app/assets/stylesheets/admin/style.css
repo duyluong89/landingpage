@@ -127,7 +127,7 @@ table.list tr td img{ max-width:60px; margin:3px 0;}
 #block_form .separator, #splash_form .separator, #app_form .separator{ width:463px;}
 
 #remove_img {width: 11px;}
-/*#remove_img {background-image:url("images/icons/close-hover.png"); background-repeat: no-repeat; display:block;}
+/*#remove_img {background-image:url("images1/icons/close-hover.png"); background-repeat: no-repeat; display:blocks;}
 #remove_img:hover img {visibility:hidden;} /*
 
 #page_form {background-color: #fff; width: 100%;}
@@ -229,7 +229,7 @@ span.preview:hover > span {margin: 20px 0 0 280px; background: #ffffff; z-index:
 #analytic_form .textbox{ width:auto; height:auto;}
 
 /*------------------- Ads Form -----------------*/
-/*#ads_form .editor   span{ display: inline block; clear:none; height:22px; line-height:22px;}*/
+/*#ads_form .editor   span{ display: inline blocks; clear:none; height:22px; line-height:22px;}*/
 .adscontentpreview {	text-align:left; max-width: 90px;}
 .adscontentpreview * { max-width: 90px; }
 .popupcontentpreview { text-align:left; max-width: 800px; }

@@ -1,0 +1,48 @@
+<div id="block_list">
+  <h2>Blocks management</h2>
+  <p>
+    <%= link_to "Landing page list", pages_path %>
+    ><%= link_to @page.pageName, edit_page_path(@page.id) %></a>
+    > Blocks management
+  </p>
+  <%= link_to "+ Add new Block" ,new_block_path %>
+  <table class="list" cellpadding="0" cellspacing="0">
+    <thead>
+    <tr>
+      <td width="5%">Id</td>
+      <td>Block Name</td>
+      <td width="8%">Order</td>
+      <!--<td width="10%">Is Alternative</td>-->
+      <td width="8%">Status</td>
+      <td width="18%">Actions</td>
+    </tr>
+    </thead>
+    <tbody>
+    <% @blocks.each do |row| %>
+    <% if row.active==1
+             @Status = "Active"
+           else
+             @Status = "Hidden"
+           end
+    %>
+    <tr>
+      <td><%= row.id %></td>
+      <td><%= row.blockName %></td>
+      <td>
+        <a class="narrow_down" title="Move down" href="#">
+          <img src="/assets/images/ico_move_down.png" border="0">
+        </a>
+        <a class="narrow_up" title="Move up" href="#">
+          <img src="/assets/images/ico_move_up.png" border="0">
+        </a>
+      </td>
+      <td><%= @Status %></td>
+      <td>
+        <%= link_to "Edit", edit_block_path(row)%>
+        <%=  link_to 'Delete', block_path(row),:method=>"delete", :data=>{ :confirm=>'Are you sure?' } %>
+      </td>
+    </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

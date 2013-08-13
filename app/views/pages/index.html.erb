@@ -1,0 +1,39 @@
+<div id="page_list">
+  <h2>Landing page list</h2>
+  <div><%= link_to "+ Add new landing page", new_page_path %></div>
+  <table id="table" class="list" cellpadding="0" cellspacing="0">
+    <thead>
+    <tr>
+      <th width="5%">Id</th>
+      <th>Page Name</th>
+      <th width="10%">Owner</th>
+      <th width="8%">Status</th>
+      <th width="40%">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @pages.each do |row| %>
+    <% if row.active==1
+         @Status = "Active"
+       else
+         @Status = "Hidden"
+       end
+    %>
+    <tr>
+      <td><%= row.id %></td>
+      <td><%= row.pageName %></td>
+      <td><%= row.pageOwner %></td>
+      <td><%= @Status %></td>
+      <td>
+        <%= link_to "Duplicate",:action=>"duplicate",:id=>row %>
+        <%= link_to "Preview" %>
+        <%= link_to "Blocks",:controller=>"blocks",:action=>"index",:id=>row %>
+        <%= link_to "Ads", :controller=>"ads",:action=>"index", :id=>row %>
+        <%= link_to "Edit", edit_page_path(row)%>
+        <%=  link_to 'Delete', page_path(row),:method=>"delete", :data=>{ :confirm=>'Are you sure?' } %>
+      </td>
+    </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

@@ -426,7 +426,7 @@
 						if (options.flat) {
 							cal.css({
 								position: 'relative',
-								display: 'block'
+								display: 'blocks'
 							});
 						} else {
 							$(this).bind(options.eventName, show);

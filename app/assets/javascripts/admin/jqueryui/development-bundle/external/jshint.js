@@ -188,7 +188,7 @@
  VBArray, WeakMap, WSH, WScript, XDomainRequest, Web, Window, XMLDOM, XMLHttpRequest, XMLSerializer,
  XPathEvaluator, XPathException, XPathExpression, XPathNamespace, XPathNSResolver, XPathResult,
  "\\", a, abs, addEventListener, address, alert, apply, applicationCache, arguments, arity,
- asi, atob, b, basic, basicToken, bitwise, blacklist, block, blur, boolOptions, boss,
+ asi, atob, b, basic, basicToken, bitwise, blacklist, blocks, blur, boolOptions, boss,
  browser, btoa, c, call, callee, caller, camelcase, cases, charAt, charCodeAt, character,
  clearInterval, clearTimeout, close, closed, closure, comment, complexityCount, condition,
  confirm, console, constructor, content, couch, create, css, curly, d, data, datalist, dd, debug,
@@ -338,7 +338,7 @@ var JSHINT = (function () {
             quotmark     : false, //'single'|'double'|true
             scope        : false,
             maxstatements: false, // {int} max statements per function
-            maxdepth     : false, // {int} max nested block depth per function
+            maxdepth     : false, // {int} max nested blocks depth per function
             maxparams    : false, // {int} max params per function
             maxcomplexity: false  // {int} max cyclomatic complexity per function
         },
@@ -1118,7 +1118,7 @@ var JSHINT = (function () {
 
             // If smarttabs option is used check for spaces followed by tabs only.
             // Otherwise check for any occurence of mixed tabs and spaces.
-            // Tabs and one space followed by block comment is allowed.
+            // Tabs and one space followed by blocks comment is allowed.
             if (option.smarttabs) {
                 // negative look-behind for "//"
                 match = s.match(/(\/\/)? \t/);
@@ -2651,7 +2651,7 @@ loop:
             t = nexttoken;
         }
 
-        // Is it a lonely block?
+        // Is it a lonely blocks?
 
         if (t.id === "{") {
             block(true, true);
@@ -2681,7 +2681,7 @@ loop:
 
             if (nexttoken.id !== ";") {
                 if (!option.asi) {
-                    // If this is the last statement in a block that ends on
+                    // If this is the last statement in a blocks that ends on
                     // the same line *and* option lastsemic is on, ignore the warning.
                     // Otherwise, complain about missing semicolon.
                     if (!option.lastsemic || nexttoken.id !== "}" ||
@@ -2783,12 +2783,12 @@ loop:
 
 
     /*
-     * Parses a single block. A block is a sequence of statements wrapped in
+     * Parses a single blocks. A blocks is a sequence of statements wrapped in
      * braces.
      *
      * ordinary - true for everything but function bodies and try blocks.
-     * stmt     - true if block can be a single statement (e.g. in if/for/while).
-     * isfunc   - true if block is a function body
+     * stmt     - true if blocks can be a single statement (e.g. in if/for/while).
+     * isfunc   - true if blocks is a function body
      */
     function block(ordinary, stmt, isfunc) {
         var a,
@@ -2873,7 +2873,7 @@ loop:
         if (!ordinary || !option.funcscope) scope = s;
         inblock = b;
         if (ordinary && option.noempty && (!a || a.length === 0)) {
-            warning("Empty block.");
+            warning("Empty blocks.");
         }
         metrics.nestedBlockDepth -= 1;
         return a;
@@ -3738,7 +3738,7 @@ loop:
             return this;
         };
         x.fud = function () {
-            error("Expected to see a statement and instead saw a block.", token);
+            error("Expected to see a statement and instead saw a blocks.", token);
         };
     }(delim("{")));
 
@@ -3798,8 +3798,8 @@ loop:
     };
 
     var varstatement = stmt("var", function (prefix) {
-        // JavaScript does not have block scope. It only has function scope. So,
-        // declaring a variable in a block can have unexpected consequences.
+        // JavaScript does not have blocks scope. It only has function scope. So,
+        // declaring a variable in a blocks can have unexpected consequences.
         var id, name, value;
 
         if (funct["(onevar)"] && option.onevar) {

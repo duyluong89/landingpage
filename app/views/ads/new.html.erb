@@ -1,0 +1,83 @@
+<div id="ads_form">
+  <h2>Add new Ads</h2>
+  <p>
+    <a href="index.php">Landing page list</a>
+    > <a href="index.php?c=page&task=edit&id=<?php echo $pageId; ?>"><?php  echo $arrNames[$pageId];?></a>
+    > <a href="index.php?c=ads&task=viewList&pageId=<?php echo $pageId;?>">Ads management</a>
+    > Add new Ads
+  </p>
+  <div class="formads">
+    <form method="post" class="dataForm" action="index.php?c=ads&task=add" enctype="multipart/form-data" onSubmit="return checkChooseLandingPage();">
+			<span class="adsspan">
+				<label>Choose landing page</label>
+				<select name="data[pageId]" class="selectbox required" id="pageSelect">
+                  <option value="-1">--- Choose landing page ---</option>
+                  <?php echo getSelectObject($arrPages, $pageId, 'id', 'pageName');?>
+                </select>
+			</span>
+			<span class="adsspan">
+				<label>Name</label>
+				<input type="text" name="data[name]" class="inputbox required" />
+			</span>
+			<span class="adsspan">
+				<label>Contact Button</label>
+				<input type="checkbox" value="1" name="data[hasContactButton]" />
+			</span>
+            <span class="adsspan">
+				<label>Active</label>
+				<input type="checkbox" value="1" name="data[active]" checked="checked" />
+                <input type="hidden" value="0" />
+			</span>
+
+			<span class="adsspan">
+				<label>Choose language</label>
+				<select name="adsContentData[languageCode]" class="selectbox">
+                  <?php echo getSelectObject($arrLanguages, $selected = $languageSelected, $k='languageCode', $v='languageName');?></select>
+			</span>
+      <div class="editor">
+        <label>Ads Content</label>
+        <div class="editor_container">
+          <textarea id="ad1Content" name="adsContentData[ad1Content]" class="textbox ckeditor" ></textarea>
+        </div>
+				<span class="preview" style="line-height:40px;" onMouseOver="loadPreviewAds();">&nbsp;Preview
+					<span id="previewAdsContent" class="adscontentpreview"></span>
+				</span>
+      </div>
+      <div class="editor">
+        <label>Popup Content</label>
+        <div class="editor_container">
+          <textarea id="popupContent" name="adsContentData[popupContent]" class="textbox ckeditor" ></textarea>
+        </div>
+				<span class="preview" style="line-height:40px;" onMouseOver="loadPopupContent();">&nbsp;Preview
+					<span id="previewPopupContent" class="popupcontentpreview"></span>
+				</span>
+      </div>
+			<span class="adsspan">
+				<label>Contact button</label>
+			</span>
+			<span class="adsspan">
+				<label>Explanation Text</label>
+				<input type="text" name="adsContentData[cbExplanationText]" class="inputbox" />
+			</span>
+			<span class="adsspan">
+				<label>Prefilled Text</label>
+				<input type="text" name="adsContentData[cbPrefilledText]" class="inputbox" />
+			</span>
+			<span class="adsspan">
+				<label>Target Email</label>
+				<input type="text" name="adsContentData[cbTargetEmail]" class="inputbox" />
+			</span>
+			<span class="adsspan">
+				<label>Button Name</label>
+				<input type="text" name="adsContentData[cbButtonName]" class="inputbox" />
+			</span>
+
+			<span class="adsspan">
+				<label>&nbsp;</label>
+				<input type="submit" name="submit" value="Save" class="button" />
+			</span>
+    </form>
+  </div>
+
+</div>
+

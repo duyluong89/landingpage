@@ -1,0 +1,97 @@
+ <h2>Add landing page</h2>
+  <p>
+    <%= link_to "Landing page list"%>
+    > Add Landing page
+  </p>
+  <div class="form">
+    <%= form_for :page, :url=>pages_path, :method=>"post"   do |f| %>
+        <span class="relative">
+          <%= f.label :pageName, "Page name"%>
+          <%= f.text_field :pageName, :class=>"inputbox required"%>
+          <div class="help">This is internal page name. It will not show anywhere on the front end.</div>
+        </span>
+        <span class="relative">
+          <%= f.label :url, "URL"%>
+          <%= f.text_field :url, :class=>"inputbox" %>
+          <div class="help">Do not use http:// here</div>
+        </span>
+        <span>
+          <%= f.label :background, "Background color" %>
+          <%= f.text_field :background, :class=>"inputbox color_picker",  :value=>"ffffff", :id=>"background" %>
+        </span>
+        <span>
+          <%= f.label :alterBackground, "Alter-background color" %>
+          <%= f.text_field :alterBackground, :class=>"inputbox color_picker", :value=>"e9e9e9" %>
+        </span>
+        <span>
+
+        </span>
+        <div id="logo">
+          <%= f.label :logo, "Logo" %>
+          <div class="input_file"><%= f.file_field :logo ,:class=>"inputbox" %></div>
+          <b class="open_gallery">From Library</b>
+          <div class="thumb_image">
+            <label>&nbsp;</label>
+            <div></div>
+                    <span class="remove_img">
+                        <span title="Remove Image"></span>
+                    </span>
+          </div>
+          <input type="hidden" name="gLogo" />
+          <div class="image_help">The size of the image should be 40x40 pixels</div>
+        </div>
+
+        <span class="relative">
+          <%= f.label :pageTitle, "Page title" %>
+          <%= f.text_field :pageTitle ,:class=>"inputbox" %>
+          <div class="help">Logo and Title will show on the top left of your page</div>
+		</span>
+        <span class="block_section4">
+          <%= f.label :analyticCode , "Analytic code" %>
+          <%= f.text_area :analyticCode , :class=>"textbox" %>
+        </span>
+        <span>
+          <%= f.label :useDefaultAnalytic ,"Use default analytic code" %>
+          <%= f.check_box :useDefaultAnalytic, :value=>"1", :checked=>true %>
+          <input type="hidden" value="0" />
+        </span>
+        <span>
+          <%= f.label :useGlobalTutorial ,"Use global tutorial" %>
+          <%= f.check_box :useGlobalTutorial, :value=>"1", :checked=>true %>
+          <input type="hidden" value="0" />
+        </span>
+         <span class="relative">
+          <%= f.label :displayCode, "Display code" %>
+          <%= f.text_field :displayCode ,:class=>"inputbox" %>
+          <div class="help">To identify user. Not visible on the front end.</div>
+		</span>
+        <span>
+          <%= f.label :buttonUrl, "Button URL" %>
+          <%= f.text_field :buttonUrl ,:class=>"inputbox" %>
+		</span>
+
+         <span class="lang_list">
+          <%= f.label :languages, "Choose Languages" %>
+           <div>
+             <% @languages.each do |language|  %>
+                 <%= check_box_tag 'page[languages][]', language.languageCode %>
+                 <input type="hidden" value="end" />
+                 <%= language.languageName %>
+             <% end %>
+           </div>
+		</span>
+
+        <span>
+          <%= f.label :active, "Active" %>
+          <%= f.check_box :active,:value=>"1", :checked=>true %>
+          <input type="hidden" value="0" />
+        </span>
+        <span>
+          <input type="hidden" name="page[pageOwner]" value="<%= @currentUser.name %>">
+           <label>&nbsp;</label>
+          <%= f.submit :value=>"Save", :class=>"button" %>
+        </span>
+    <% end %>
+
+</div>
+

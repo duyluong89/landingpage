@@ -218,7 +218,7 @@ Test.prototype = {
 			addEvent(b, "click", function() {
 				var next = b.nextSibling.nextSibling,
 					display = next.style.display;
-				next.style.display = display === "none" ? "block" : "none";
+				next.style.display = display === "none" ? "blocks" : "none";
 			});
 
 			addEvent(b, "dblclick", function( e ) {
@@ -577,7 +577,7 @@ config = {
 	// The queue of tests to run
 	queue: [],
 
-	// block until document ready
+	// blocks until document ready
 	blocking: true,
 
 	// when enabled, show only failing tests
@@ -605,7 +605,7 @@ config = {
 		{
 			id: "notrycatch",
 			label: "No try-catch",
-			tooltip: "Enabling this will run tests outside of a try-catch block. Makes debugging exceptions in IE reasonable. Stored as query-strings."
+			tooltip: "Enabling this will run tests outside of a try-catch blocks. Makes debugging exceptions in IE reasonable. Stored as query-strings."
 		}
 	],
 

@@ -1,0 +1,58 @@
+<div id="user_list">
+  <h2>Ads Management</h2>
+  <p>
+    <%= link_to "Landing page list", pages_path %>
+    ><%= link_to @page.pageName, edit_page_path(@page.id) %></a>
+    > Ads management
+  </p>
+  <%= link_to "+ Add new Ads" ,new_ad_path %>
+	<span class="adsspan" style="float:right;">
+      <%= form_for :page, :id=>"ads_form",:class=>"dataForm",:controller=>"ads",:action=>"index", :id=>15 do |f|%>
+        <%= select_tag 'page[pageSelect][]',  options_from_collection_for_select(@pages, 'id', 'pageName', '1') ,:class=>"pageSelect selectbox" %>
+      <% end %>
+	</span>
+  <table class="list" cellpadding="0" cellspacing="0">
+    <thead>
+    <tr>
+      <td width="5%">Id</td>
+      <td>Name</td>
+      <td width="20%">Landing Page Name</td>
+      <td width="8%">Order</td>
+      <td width="8%">Active</td>
+      <td width="22%">Actions</td>
+    </tr>
+    </thead>
+    <tbody>
+    <% @ads.each do |row| %>
+    <% if row.active==1
+        @Status = "Active"
+       else
+        @Status = "Hidden"
+       end
+    %>
+    <tr>
+        <td><%= row.id %></td>
+        <td><%= row.name %></td>
+        <td title="<?php if($changeName) echo $pageName;?>">
+          <?php if($changeName) echo $newName; else echo $pageName ;?>
+          <%= @page.pageName %>
+        </td>
+        <td>
+          <a class="narrow_down" title="Move down" href="#">
+            <img src="/assets/images/ico_move_down.png" border="0">
+          </a>
+          <a class="narrow_up" title="Move up" href="#">
+            <img src="/assets/images/ico_move_up.png" border="0">
+          </a>
+        </td>
+        <td><%= @Status %></td>
+        <td>
+          <%= link_to "Duplicate",:action=>"duplicate",:id=>row %>
+          <%= link_to "Edit", edit_ad_path(row)%>
+          <%=  link_to 'Delete', ad_path(row),:method=>"delete", :data=>{ :confirm=>'Are you sure?' } %>
+        </td>
+    </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
