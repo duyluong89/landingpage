@@ -5,7 +5,7 @@
     ><%= link_to @page.pageName, edit_page_path(@page.id) %></a>
     > Blocks management
   </p>
-  <%= link_to "+ Add new Block" ,new_block_path %>
+  <%= link_to "+ Add new Block" ,:controller=>"blocks",:action=>"new",:pageId=>@page.id %>
   <table class="list" cellpadding="0" cellspacing="0">
     <thead>
     <tr>

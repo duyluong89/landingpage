@@ -8,6 +8,7 @@ class PagesController < ApplicationController
     @languages = Language.all
     @currentUser = session[:curentUser]
   end
+  #start function creat page
   def create
     @page = Page.new(params[:page]) do |p|
       @a = ""
@@ -35,13 +36,15 @@ class PagesController < ApplicationController
     end
 
   end
+  #end function creat page
   # start function edit page
   def edit
     @pageid = params[:id]
     #@a=Page.select('page_texts."pageId",page_texts.message,page_texts."buttonText",page_texts.id as id1,pages.id,pages."pageName",pages.languages').joins('LEFT JOIN page_texts ON page_texts."pageId" = pages.id').where("pages.id=?",@pageid)
-    @a=Page.select('pages.*,page_texts."pageId",page_texts.message,page_texts."buttonText",page_texts.id as id1').joins('LEFT JOIN page_texts ON pages.id = page_texts."pageId"').where("pages.id=?",@pageid)
+    @a=Page.select('pages.*,page_texts."pageId",page_texts."languageCode",page_texts.message,page_texts."buttonText",page_texts.id as id1').joins('LEFT JOIN page_texts ON pages.id = page_texts."pageId"').where("pages.id=?",@pageid)
     @page = @a.find(@pageid)
-    @listlanguages = Language.all
+    @listLanguages = Language.all
+    @listUser = User.all
   end
   # end function edit page
   # start function update page
@@ -65,7 +68,7 @@ class PagesController < ApplicationController
 
     @paramsPage = {"pageName"=>params[:page]["pageName"],"url"=>params[:page]["url"],"background"=>params[:page]["background"],"alterBackground"=>params[:page]["alterBackground"],"pageTitle"=>params[:page]["pageTitle"],
                    "analyticCode"=>params[:page]["analyticCode"],"useDefaultAnalytic"=>params[:page]["useDefaultAnalytic"],"useGlobalTutorial"=>params[:page]["useGlobalTutorial"],"displayCode"=>params[:page]["displayCode"],
-                   "buttonUrl"=>params[:page]["buttonUrl"],"languages"=>params[:page]["languages"],"active"=>params[:page]["active"]
+                   "buttonUrl"=>params[:page]["buttonUrl"],"languages"=>params[:page]["languages"],"active"=>params[:page]["active"],"pageOwner"=>params[:page]["pageOwner"]
     }
     if  params[:page]["id1"]==''           #if not exits page_texts
       @paramsPageText = {"pageId"=>@page.id,"languageCode"=>params[:page]["languageCode"],"buttonText"=>params[:page]["buttonText"],"message"=>params[:page]["message"]}

@@ -11,6 +11,7 @@ Landingpage::Application.routes.draw do
   match "ads/duplicate" => "ads#duplicate"
   match "page/elfinder" => "page#elfinder"
   match "blocks/index" => "blocks#index"
+  match "blocsk/new"=>"blocks#new"
 
   resources :users
   resources :privileges

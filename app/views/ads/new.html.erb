@@ -1,82 +1,116 @@
+<?php
+// no direct access
+defined( '_HEXEC' ) or die( 'Access error' );
+?>
+<?php
+$msg = $this->msg;
+$arrLanguages = $this->arrLanguages;
+$languageSelected = $this->languageCode;
+
+$arrPages = $this->arrPages;
+$pageId = $this->pageId;
+
+$arrNames = array();
+for($i = 0; $i< count($arrPages); $i ++) {
+//echo $arrPages[$i]['id'].'-'.$arrPages[$i]['pageName'].'<br>';
+$arrNames[$arrPages[$i]['id']] = $arrPages[$i]['pageName'];
+}
+?>
+<script language="JavaScript" type="text/javascript">
+    function loadPreviewAds() {
+        document.getElementById('previewAdsContent').innerHTML = CKEDITOR.instances.ad1Content.getData();
+    }
+    function loadPopupContent() {
+        document.getElementById('previewPopupContent').innerHTML = CKEDITOR.instances.popupContent.getData();
+    }
+    function checkChooseLandingPage() {
+        if(document.getElementById('pageSelect').value < 1) {
+            alert("Please choose landing page");
+            document.getElementById('pageSelect').focus();
+            return false;
+        }
+        return true;
+    }
+</script>
+
 <div id="ads_form">
   <h2>Add new Ads</h2>
   <p>
-    <a href="index.php">Landing page list</a>
-    > <a href="index.php?c=page&task=edit&id=<?php echo $pageId; ?>"><?php  echo $arrNames[$pageId];?></a>
-    > <a href="index.php?c=ads&task=viewList&pageId=<?php echo $pageId;?>">Ads management</a>
+    <%= link_to "Landing page list", pages_path %>
+    > <%= link_to @page.pageName ,edit_page_path(@page.id) %></a>
+    > <%= link_to "Ads management",:controller=>"ads",:action=>"index",:pageId=>@page.id%>
     > Add new Ads
   </p>
   <div class="formads">
+    <%= form_for :ad, :url=>ads_path, :method=>"post"   do |f| %>
     <form method="post" class="dataForm" action="index.php?c=ads&task=add" enctype="multipart/form-data" onSubmit="return checkChooseLandingPage();">
 			<span class="adsspan">
-				<label>Choose landing page</label>
-				<select name="data[pageId]" class="selectbox required" id="pageSelect">
-                  <option value="-1">--- Choose landing page ---</option>
-                  <?php echo getSelectObject($arrPages, $pageId, 'id', 'pageName');?>
-                </select>
+                <%= f.label :pageId, "Choose landing page"%>
+                <%= select_tag 'ad[pageId]',  options_from_collection_for_select(@listPages, 'id', 'pageName', @page.id) ,:class=>"selectbox required",:name=>'ad[pageId]' %>
 			</span>
 			<span class="adsspan">
-				<label>Name</label>
-				<input type="text" name="data[name]" class="inputbox required" />
+                <%=f.label :name ,"Name" %>
+                <%=f.text_field :name,:class=>"inputbox required" %>
 			</span>
 			<span class="adsspan">
-				<label>Contact Button</label>
-				<input type="checkbox" value="1" name="data[hasContactButton]" />
+                <%=f.label :hasContactButton ,"Contact Button"%>
+                <%=f.check_box :hasContactButton,:value=>"1" %>
+              <input type="hidden" value="0" />
 			</span>
             <span class="adsspan">
-				<label>Active</label>
-				<input type="checkbox" value="1" name="data[active]" checked="checked" />
+                <%=f.label :active,"Active" %>
+                <%=f.check_box :active, :value=>"1",:checked=>true %>
                 <input type="hidden" value="0" />
 			</span>
-
+            <%= f.fields_for :ad_contents do |a| %>
 			<span class="adsspan">
-				<label>Choose language</label>
-				<select name="adsContentData[languageCode]" class="selectbox">
-                  <?php echo getSelectObject($arrLanguages, $selected = $languageSelected, $k='languageCode', $v='languageName');?></select>
+                <%= a.label :languageCode, "Choose language"%>
+                <%= select_tag 'ad[languageCode]',  options_from_collection_for_select(@listLanguages, 'languageCode', 'languageName', '1') ,:class=>"selectbox",:name=>'ad[languageCode]' %>
 			</span>
-      <div class="editor">
-        <label>Ads Content</label>
-        <div class="editor_container">
-          <textarea id="ad1Content" name="adsContentData[ad1Content]" class="textbox ckeditor" ></textarea>
-        </div>
+            <div class="editor">
+                <%= a.label :ad1Content,"Ads Content" %>
+            <div class="editor_container">
+                <%= a.text_area :ad1Content,:class=>"textbox ckeditor" %>
+            </div>
 				<span class="preview" style="line-height:40px;" onMouseOver="loadPreviewAds();">&nbsp;Preview
 					<span id="previewAdsContent" class="adscontentpreview"></span>
 				</span>
-      </div>
-      <div class="editor">
-        <label>Popup Content</label>
-        <div class="editor_container">
-          <textarea id="popupContent" name="adsContentData[popupContent]" class="textbox ckeditor" ></textarea>
-        </div>
+            </div>
+            <div class="editor">
+                <%= a.label :popupContent, "Popup Content" %>
+            <div class="editor_container">
+                <%= a.text_area :popupContent,:class=>"textbox ckeditor" %>
+            </div>
 				<span class="preview" style="line-height:40px;" onMouseOver="loadPopupContent();">&nbsp;Preview
 					<span id="previewPopupContent" class="popupcontentpreview"></span>
 				</span>
-      </div>
+            </div>
 			<span class="adsspan">
 				<label>Contact button</label>
 			</span>
 			<span class="adsspan">
-				<label>Explanation Text</label>
-				<input type="text" name="adsContentData[cbExplanationText]" class="inputbox" />
-			</span>
-			<span class="adsspan">
-				<label>Prefilled Text</label>
-				<input type="text" name="adsContentData[cbPrefilledText]" class="inputbox" />
-			</span>
-			<span class="adsspan">
-				<label>Target Email</label>
-				<input type="text" name="adsContentData[cbTargetEmail]" class="inputbox" />
-			</span>
-			<span class="adsspan">
-				<label>Button Name</label>
-				<input type="text" name="adsContentData[cbButtonName]" class="inputbox" />
-			</span>
+                    <%= a.label :cbExplanationText, "Explanation Text" %>
+                    <%= a.text_field :cbExplanationText, :class=>"inputbox"%>
 
+			</span>
+			<span class="adsspan">
+                <%= a.label :cbPrefilledText ,"Prefilled Text" %>
+                <%= a.text_field :cbPrefilledText, :class=>"inputbox"%>
+			</span>
+			<span class="adsspan">
+                <%= a.label :cbTargetEmail ,"Target Email" %>
+                <%= a.text_field :cbTargetEmail, :class=>"inputbox"%>
+			</span>
+			<span class="adsspan">
+				<%= a.label :cbButtonName, "Button Name" %>
+                <%= a.text_field :cbButtonName, :class=>"inputbox"%>
+			</span>
+            <% end %>
 			<span class="adsspan">
 				<label>&nbsp;</label>
-				<input type="submit" name="submit" value="Save" class="button" />
+                <%= f.submit :value=>"Save", :class=>"button" %>
 			</span>
-    </form>
+    <% end %>
   </div>
 
 </div>

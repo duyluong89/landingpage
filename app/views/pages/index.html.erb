@@ -27,8 +27,8 @@
       <td>
         <%= link_to "Duplicate",:action=>"duplicate",:id=>row %>
         <%= link_to "Preview" %>
-        <%= link_to "Blocks",:controller=>"blocks",:action=>"index",:id=>row %>
-        <%= link_to "Ads", :controller=>"ads",:action=>"index", :id=>row %>
+        <%= link_to "Blocks",:controller=>"blocks",:action=>"index",:pageId=>row %>
+        <%= link_to "Ads", :controller=>"ads",:action=>"index", :pageId=>row %>
         <%= link_to "Edit", edit_page_path(row)%>
         <%=  link_to 'Delete', page_path(row),:method=>"delete", :data=>{ :confirm=>'Are you sure?' } %>
       </td>

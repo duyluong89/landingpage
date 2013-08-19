@@ -5,10 +5,10 @@
     ><%= link_to @page.pageName, edit_page_path(@page.id) %></a>
     > Ads management
   </p>
-  <%= link_to "+ Add new Ads" ,new_ad_path %>
+  <%= link_to "+ Add new Ads" ,:controller=>"ads",:action=>"new",:pageId=>@page.id %>
 	<span class="adsspan" style="float:right;">
       <%= form_for :page, :id=>"ads_form",:class=>"dataForm",:controller=>"ads",:action=>"index", :id=>15 do |f|%>
-        <%= select_tag 'page[pageSelect][]',  options_from_collection_for_select(@pages, 'id', 'pageName', '1') ,:class=>"pageSelect selectbox" %>
+        <%= select_tag 'page[pageSelect][]',  options_from_collection_for_select(@pages, 'id', 'pageName',@page.id),:class=>"pageSelect selectbox" %>
       <% end %>
 	</span>
   <table class="list" cellpadding="0" cellspacing="0">
